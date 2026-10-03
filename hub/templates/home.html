@@ -1,0 +1,482 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ServiceHub | Home & Vehicle Services</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="#">
+            <i class="fa-solid fa-house-circle-check"></i>
+            Service<span>Hub</span>
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav mx-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#services">Services</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+
+            </ul>
+
+            <div class="nav-buttons">
+
+                <a href="{% url 'login' %}" class="btn btn-primary">
+    Login
+</a>
+
+                <a href="{% url 'register' %}" class="btn btn-primary">Register</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-7">
+
+                <span class="hero-badge">
+                    <i class="fa-solid fa-star"></i>
+                    Reliable Service Platform
+                </span>
+
+                <h1>
+                    Professional Services
+                    <br>
+                    <span>At Your Doorstep</span>
+                </h1>
+
+                <p>
+                    Book trusted professionals for your home and vehicle
+                    service needs. Fast, simple and reliable.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#services" class="btn btn-primary btn-lg">
+                        Explore Services
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                    <a href="{% url 'login' %}" class="btn btn-light">
+    Book a Service
+</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SERVICES ================= -->
+
+<section class="services-section" id="services">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>OUR SERVICES</span>
+
+            <h2>What Do You Need?</h2>
+
+            <p>
+                Choose a service category and find the right professional
+                for your requirement.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <!-- HOME SERVICE -->
+
+            <div class="col-lg-6">
+
+                <div class="service-category home-service">
+
+                    <div class="category-icon">
+                        <i class="fa-solid fa-house"></i>
+                    </div>
+
+                    <h3>Home Services</h3>
+
+                    <p>
+                        Get professional help for your everyday
+                        home maintenance needs.
+                    </p>
+
+                    <div class="service-list">
+
+                        <div>
+                            <i class="fa-solid fa-bolt"></i>
+                            Electrician
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-faucet"></i>
+                            Plumber
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-snowflake"></i>
+                            AC Repair
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
+                            Other Services
+                        </div>
+
+                    </div>
+
+                    
+
+                </div>
+
+            </div>
+
+
+            <!-- VEHICLE SERVICE -->
+
+            <div class="col-lg-6">
+
+                <div class="service-category vehicle-service">
+
+                    <div class="category-icon">
+                        <i class="fa-solid fa-car"></i>
+                    </div>
+
+                    <h3>Vehicle Services</h3>
+
+                    <p>
+                        Keep your vehicle in good condition with
+                        professional service providers.
+                    </p>
+
+                    <div class="service-list">
+
+                        <div>
+                            <i class="fa-solid fa-car-side"></i>
+                            Car Service
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-motorcycle"></i>
+                            Bike Service
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-droplet"></i>
+                            Vehicle Wash
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-gears"></i>
+                            Other Services
+                        </div>
+
+                    </div>
+
+                    
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WHY SERVICEHUB ================= -->
+
+<section class="why-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>WHY SERVICEHUB?</span>
+
+            <h2>Simple. Reliable. Professional.</h2>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-md-3">
+
+                <div class="feature-box">
+
+                    <i class="fa-solid fa-user-shield"></i>
+
+                    <h4>Trusted Professionals</h4>
+
+                    <p>
+                        Connect with reliable service providers.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <div class="feature-box">
+
+                    <i class="fa-solid fa-calendar-check"></i>
+
+                    <h4>Easy Booking</h4>
+
+                    <p>
+                        Book your required service in a few steps.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <div class="feature-box">
+
+                    <i class="fa-solid fa-clock"></i>
+
+                    <h4>Flexible Scheduling</h4>
+
+                    <p>
+                        Select a suitable date and time.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <div class="feature-box">
+
+                    <i class="fa-solid fa-headset"></i>
+
+                    <h4>Support</h4>
+
+                    <p>
+                        Get assistance whenever you need it.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about-section" id="about">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-6">
+
+                <div class="about-content">
+
+                    <span>ABOUT SERVICEHUB</span>
+
+                    <h2>
+                        One Platform For
+                        All Your Services
+                    </h2>
+
+                    <p>
+                        ServiceHub is a unified service booking platform
+                        designed to make everyday service requirements
+                        easier.
+                    </p>
+
+                    <p>
+                        Whether you need a professional for your home
+                        or want to service your vehicle, ServiceHub
+                        connects you with the right service provider.
+                    </p>
+
+                    <a href="{% url 'register' %}" class="btn btn-primary">
+    Get Started
+</a>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-6">
+
+                <div class="about-card">
+
+                    <i class="fa-solid fa-layer-group"></i>
+
+                    <h3>Everything In One Place</h3>
+
+                    <p>
+                        Home services and vehicle services
+                        managed through one simple platform.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section class="contact-section" id="contact">
+
+    <div class="container">
+
+        <div class="contact-box">
+
+            <h2>Need a Service?</h2>
+
+            <p>
+                Book a professional service today with ServiceHub.
+            </p>
+
+            <a href="#" class="btn btn-light">
+                Book Now
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-content">
+
+            <div>
+
+                <h3>
+                    Service<span>Hub</span>
+                </h3>
+
+                <p>
+                    Your trusted platform for home and vehicle services.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="#">Home</a>
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+
+            </div>
+
+        </div>
+
+
+        <hr>
+
+        <p class="copyright">
+            © 2026 ServiceHub. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

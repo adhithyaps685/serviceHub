@@ -1,0 +1,267 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Workers | ServiceHub</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/worker_management.css' %}">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        Service<span>Hub</span>
+    </div>
+
+    <div class="nav-links">
+
+        <a href="{% url 'admin_dashboard' %}">
+            Dashboard
+        </a>
+
+        <a href="{% url 'logout' %}" class="logout">
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+
+<div class="container">
+
+    <div class="page-header">
+
+        <h1>Worker Management</h1>
+
+        <p>
+            Review worker registration requests and manage approved workers.
+        </p>
+
+    </div>
+
+
+    <!-- MESSAGES -->
+
+    {% if messages %}
+
+        {% for message in messages %}
+
+            <div class="message">
+                {{ message }}
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+
+    <!-- PENDING REQUESTS -->
+
+    <section>
+
+        <h2>Pending Requests</h2>
+
+        {% if pending_workers %}
+
+            <div class="request-grid">
+
+                {% for worker in pending_workers %}
+
+                <div class="worker-card">
+
+                    <h3>
+                        {{ worker.user.get_full_name }}
+                    </h3>
+
+                    <div class="worker-info">
+
+                        <p>
+                            <strong>Email:</strong>
+                            {{ worker.user.email }}
+                        </p>
+
+                        <p>
+                            <strong>Phone:</strong>
+                            {{ worker.phone }}
+                        </p>
+
+                        <p>
+                            <strong>Place:</strong>
+                            {{ worker.place }}
+                        </p>
+
+                        <p>
+                            <strong>Experience:</strong>
+                            {{ worker.experience }} years
+                        </p>
+
+                        <p>
+                            <strong>Services:</strong>
+
+                            {% for service in worker.services.all %}
+                                {{ service.name }}{% if not forloop.last %}, {% endif %}
+                            {% empty %}
+                                No service selected
+                            {% endfor %}
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="actions">
+
+                        <form method="POST"
+                              action="{% url 'approve_worker' worker.id %}">
+
+                            {% csrf_token %}
+
+                            <button type="submit"
+                                    class="approve-btn">
+
+                                Approve
+
+                            </button>
+
+                        </form>
+
+
+                        <form method="POST"
+                              action="{% url 'reject_worker' worker.id %}">
+
+                            {% csrf_token %}
+
+                            <button type="submit"
+                                    class="reject-btn">
+
+                                Reject
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="empty-box">
+                No pending worker requests.
+            </div>
+
+        {% endif %}
+
+    </section>
+
+
+    <!-- APPROVED WORKERS -->
+
+    <section class="approved-section">
+
+        <h2>Approved Workers</h2>
+
+        {% if approved_workers %}
+
+        <div class="table-card">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Service</th>
+                        <th>Place</th>
+                        <th>Experience</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for worker in approved_workers %}
+
+                    <tr>
+
+                        <td>
+                            {{ worker.user.get_full_name }}
+                        </td>
+
+                        <td>
+                            {{ worker.user.email }}
+                        </td>
+
+                        <td>
+                            {{ worker.phone }}
+                        </td>
+
+                        <td>
+
+                            {% for service in worker.services.all %}
+
+                                {{ service.name }}
+
+                                {% if not forloop.last %}
+                                    ,
+                                {% endif %}
+
+                            {% empty %}
+
+                                -
+
+                            {% endfor %}
+
+                        </td>
+
+                        <td>
+                            {{ worker.place }}
+                        </td>
+
+                        <td>
+                            {{ worker.experience }} years
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        {% else %}
+
+            <div class="empty-box">
+                No approved workers yet.
+            </div>
+
+        {% endif %}
+
+    </section>
+
+</div>
+
+</body>
+</html>

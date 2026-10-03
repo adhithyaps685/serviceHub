@@ -1,0 +1,598 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Book a Service | ServiceHub</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Booking CSS -->
+    <link rel="stylesheet"
+          href="{% static 'css/booking.css' %}">
+
+</head>
+
+
+<body>
+
+
+<!-- ================================================= -->
+<!-- NAVBAR -->
+<!-- ================================================= -->
+
+<nav class="navbar navbar-expand-lg service-navbar">
+
+    <div class="container">
+
+        <!-- Logo -->
+
+        <a class="navbar-brand"
+           href="{% url 'customer' %}">
+
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+
+            Service<span>Hub</span>
+
+        </a>
+
+
+        <!-- Navigation -->
+
+        <div class="navbar-right">
+
+            <a href="{% url 'customer' %}"
+               class="nav-link-custom">
+
+                <i class="fa-solid fa-house"></i>
+
+                Dashboard
+
+            </a>
+
+
+            <a href="{% url 'logout' %}"
+               class="logout-btn">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ================================================= -->
+<!-- PAGE HEADER -->
+<!-- ================================================= -->
+
+<section class="booking-header">
+
+    <div class="container">
+
+        <div class="header-content">
+
+            <div>
+
+                <span class="header-label">
+
+                    <i class="fa-solid fa-calendar-check"></i>
+
+                    SERVICE BOOKING
+
+                </span>
+
+
+                <h1>
+                    Book a Service
+                </h1>
+
+
+                <p>
+
+                    Choose the service you need, select an available
+                    professional, and schedule a convenient time.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================================= -->
+<!-- BOOKING SECTION -->
+<!-- ================================================= -->
+
+<section class="booking-section">
+
+    <div class="container">
+
+        <div class="booking-wrapper">
+
+
+            <!-- ================================================= -->
+            <!-- LEFT INFORMATION CARD -->
+            <!-- ================================================= -->
+
+            <div class="booking-info">
+
+
+                <div class="info-icon">
+
+                    <i class="fa-solid fa-headset"></i>
+
+                </div>
+
+
+                <h2>
+
+                    Professional Service<br>
+                    Made Simple
+
+                </h2>
+
+
+                <p>
+
+                    Get reliable professionals for your home and vehicle
+                    service needs through ServiceHub.
+
+                </p>
+
+
+
+                <!-- VERIFIED PROFESSIONALS -->
+
+                <div class="info-item">
+
+                    <div class="small-icon">
+
+                        <i class="fa-solid fa-user-check"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h4>
+                            Verified Professionals
+                        </h4>
+
+                        <p>
+                            Choose from approved service workers.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FLEXIBLE SCHEDULING -->
+
+                <div class="info-item">
+
+                    <div class="small-icon">
+
+                        <i class="fa-solid fa-clock"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h4>
+                            Flexible Scheduling
+                        </h4>
+
+                        <p>
+                            Select a date and time that suits you.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- EASY & SECURE -->
+
+                <div class="info-item">
+
+                    <div class="small-icon">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h4>
+                            Easy & Secure
+                        </h4>
+
+                        <p>
+                            Your booking details stay connected to your account.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ================================================= -->
+            <!-- RIGHT BOOKING CARD -->
+            <!-- ================================================= -->
+
+            <div class="booking-card">
+
+
+                <!-- FORM HEADING -->
+
+                <div class="form-heading">
+
+                    <div>
+
+                        <h2>
+                            Service Details
+                        </h2>
+
+                        <p>
+                            Fill in the details below to create your booking.
+                        </p>
+
+                    </div>
+
+
+                    <div class="form-icon">
+
+                        <i class="fa-solid fa-calendar-plus"></i>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ================================================= -->
+                <!-- MESSAGES -->
+                <!-- ================================================= -->
+
+                {% if messages %}
+
+                    {% for message in messages %}
+
+                        <div class="alert alert-{{ message.tags }}">
+
+                            {{ message }}
+
+                        </div>
+
+                    {% endfor %}
+
+                {% endif %}
+
+
+
+                <!-- ================================================= -->
+                <!-- BOOKING FORM -->
+                <!-- ================================================= -->
+
+                <form method="POST">
+
+                    {% csrf_token %}
+
+
+
+                    <!-- ================================================= -->
+                    <!-- SERVICE + PROFESSIONAL -->
+                    <!-- ================================================= -->
+
+                    <div class="form-row">
+
+
+                        <!-- SERVICE -->
+
+                        <div class="form-group">
+
+                            <label for="service">
+
+                                <i class="fa-solid fa-wrench"></i>
+
+                                Service
+
+                            </label>
+
+
+                            <select name="service"
+                                    id="service"
+                                    required>
+
+                                <option value="">
+                                    Select a service
+                                </option>
+
+
+                                {% for service in services %}
+
+                                    <option value="{{ service.id }}">
+
+                                        {{ service.name }}
+
+                                    </option>
+
+                                {% endfor %}
+
+                            </select>
+
+                        </div>
+
+
+
+                        <!-- PROFESSIONAL -->
+
+                        <div class="form-group">
+
+                            <label for="worker">
+
+                                <i class="fa-solid fa-user-gear"></i>
+
+                                Professional
+
+                            </label>
+
+
+                            <select name="worker"
+                                    id="worker"
+                                    required>
+
+                                <option value="">
+                                    Select a professional
+                                </option>
+
+
+                                {% for worker in workers %}
+
+                                    <option value="{{ worker.id }}">
+
+                                        {{ worker.user.get_full_name }}
+                                        — {{ worker.place }}
+
+                                    </option>
+
+                                {% endfor %}
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ================================================= -->
+                    <!-- DATE + TIME -->
+                    <!-- ================================================= -->
+
+                    <div class="form-row">
+
+
+                        <!-- DATE -->
+
+                        <div class="form-group">
+
+                            <label for="booking_date">
+
+                                <i class="fa-solid fa-calendar"></i>
+
+                                Preferred Date
+
+                            </label>
+
+
+                            <input type="date"
+                                   name="booking_date"
+                                   id="booking_date"
+                                   required>
+
+                        </div>
+
+
+
+                        <!-- TIME -->
+
+                        <div class="form-group">
+
+                            <label for="booking_time">
+
+                                <i class="fa-solid fa-clock"></i>
+
+                                Preferred Time
+
+                            </label>
+
+
+                            <input type="time"
+                                   name="booking_time"
+                                   id="booking_time"
+                                   required>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ================================================= -->
+                    <!-- SERVICE ADDRESS -->
+                    <!-- ================================================= -->
+
+                    <div class="form-group">
+
+                        <label for="address">
+
+                            <i class="fa-solid fa-location-dot"></i>
+
+                            Service Address
+
+                        </label>
+
+
+                        <textarea name="address"
+                                  id="address"
+                                  rows="3"
+                                  placeholder="Enter the address where the service is required..."
+                                  required></textarea>
+
+                    </div>
+
+
+
+                    <!-- ================================================= -->
+                    <!-- DESCRIPTION -->
+                    <!-- ================================================= -->
+
+                    <div class="form-group">
+
+                        <label for="description">
+
+                            <i class="fa-solid fa-message"></i>
+
+                            Describe Your Requirement
+
+                        </label>
+
+
+                        <textarea name="description"
+                                  id="description"
+                                  rows="4"
+                                  placeholder="Tell the professional what kind of service you need..."></textarea>
+
+                    </div>
+
+
+
+                    <!-- ================================================= -->
+                    <!-- BOOKING INFORMATION -->
+                    <!-- ================================================= -->
+
+                    <div class="booking-note">
+
+                        <i class="fa-solid fa-circle-info"></i>
+
+
+                        <span>
+
+                            Your booking request will be sent to the selected
+                            professional for confirmation.
+
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- ================================================= -->
+                    <!-- BOOK SERVICE BUTTON -->
+                    <!-- ================================================= -->
+
+                    <button type="submit"
+                            class="book-btn">
+
+                        <i class="fa-solid fa-calendar-check"></i>
+
+                        Book Service
+
+                    </button>
+
+
+
+                    <!-- CANCEL -->
+
+                    <a href="{% url 'customer' %}"
+                       class="cancel-link">
+
+                        Cancel and return to dashboard
+
+                    </a>
+
+
+                </form>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================================= -->
+<!-- FOOTER -->
+<!-- ================================================= -->
+
+<footer class="booking-footer">
+
+    <div class="container">
+
+        <p>
+
+            © 2026
+
+            <strong>
+                ServiceHub
+            </strong>.
+
+            Professional services, simplified.
+
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- ================================================= -->
+<!-- BOOTSTRAP JS -->
+<!-- ================================================= -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+</body>
+
+</html>

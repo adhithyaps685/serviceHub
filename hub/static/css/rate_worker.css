@@ -1,0 +1,222 @@
+/* ================================
+   RATE WORKER PAGE
+================================ */
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #f5f7fb;
+    font-family: Arial, sans-serif;
+    color: #1b3764;
+}
+
+
+/* ================================
+   MAIN CONTAINER
+================================ */
+
+.container {
+    max-width: 700px;
+}
+
+
+/* ================================
+   RATING CARD
+================================ */
+
+.card {
+    background: #ffffff;
+    border: none;
+    border-radius: 18px;
+    padding: 35px !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08) !important;
+}
+
+
+/* ================================
+   PAGE TITLE
+================================ */
+
+.card h2 {
+    margin: 0;
+    color: #163b70;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+
+/* ================================
+   WORKER NAME
+================================ */
+
+.card h4 {
+    margin-top: 20px;
+    margin-bottom: 8px;
+    color: #2161d1;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+
+/* ================================
+   SERVICE NAME
+================================ */
+
+.card p {
+    color: #65758b;
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+.card p strong {
+    color: #1b3764;
+}
+
+
+/* ================================
+   HORIZONTAL LINE
+================================ */
+
+.card hr {
+    border: 0;
+    border-top: 1px solid #e5eaf1;
+    margin: 20px 0;
+}
+
+
+/* ================================
+   FORM LABEL
+================================ */
+
+.form-label {
+    color: #294a75;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+
+/* ================================
+   INPUT / SELECT
+================================ */
+
+.form-control {
+    min-height: 48px;
+    border: 1px solid #d7dfeb;
+    border-radius: 10px;
+    padding: 10px 14px;
+    color: #263f63;
+    background: #ffffff;
+    transition: all 0.2s ease;
+}
+
+
+.form-control:focus {
+    border-color: #2161d1;
+    box-shadow: 0 0 0 3px rgba(33, 97, 209, 0.12);
+}
+
+
+/* ================================
+   TEXTAREA
+================================ */
+
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+
+/* ================================
+   RATING SELECT
+================================ */
+
+select.form-control {
+    cursor: pointer;
+}
+
+
+/* ================================
+   BUTTONS
+================================ */
+
+.btn {
+    border-radius: 9px;
+    padding: 11px 22px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+
+/* Submit Rating */
+
+.btn-primary {
+    background: #2161d1;
+    border-color: #2161d1;
+}
+
+
+.btn-primary:hover {
+    background: #174da9;
+    border-color: #174da9;
+    transform: translateY(-1px);
+}
+
+
+/* Cancel */
+
+.btn-secondary {
+    background: #eef1f5;
+    border-color: #eef1f5;
+    color: #40536d;
+    margin-left: 8px;
+}
+
+
+.btn-secondary:hover {
+    background: #dfe4eb;
+    border-color: #dfe4eb;
+    color: #263f63;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+
+    .container {
+        width: 95%;
+    }
+
+    .card {
+        padding: 25px !important;
+    }
+
+    .card h2 {
+        font-size: 25px;
+    }
+
+    .card h4 {
+        font-size: 20px;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .card {
+        padding: 20px !important;
+    }
+
+    .btn {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .btn-secondary {
+        margin-left: 0;
+    }
+
+}

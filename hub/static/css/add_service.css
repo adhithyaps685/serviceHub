@@ -1,0 +1,309 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f8fafc;
+    color: #334155;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    height: 70px;
+
+    background: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 50px;
+
+    border-bottom: 1px solid #e2e8f0;
+
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 700;
+
+    color: #172554;
+}
+
+.logo span {
+    color: #2563eb;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+
+    color: #475569;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.nav-links a:hover {
+    color: #2563eb;
+}
+
+.nav-links .logout {
+    background: #ef4444;
+
+    color: #ffffff;
+
+    padding: 9px 16px;
+
+    border-radius: 6px;
+}
+
+.nav-links .logout:hover {
+    background: #dc2626;
+}
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container {
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    padding: 50px 30px;
+}
+
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.page-header {
+    margin-bottom: 30px;
+}
+
+.page-header h1 {
+    font-size: 30px;
+
+    color: #172554;
+
+    margin-bottom: 8px;
+}
+
+.page-header p {
+    font-size: 14px;
+
+    color: #64748b;
+}
+
+
+/* =========================
+   FORM CARD
+========================= */
+
+.form-card {
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 12px;
+
+    padding: 35px;
+
+    box-shadow: 0 5px 15px rgba(15, 23, 42, 0.06);
+}
+
+
+/* =========================
+   FORM GROUP
+========================= */
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #172554;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color: #334155;
+
+    font-size: 14px;
+
+    font-family: Arial, sans-serif;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #94a3b8;
+}
+
+
+/* INPUT FOCUS */
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #2563eb;
+
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+
+/* TEXTAREA */
+
+.form-group textarea {
+    resize: vertical;
+
+    min-height: 120px;
+}
+
+
+/* =========================
+   BUTTON AREA
+========================= */
+
+.form-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 8px;
+}
+
+
+/* ADD BUTTON */
+
+.add-btn {
+    border: none;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    padding: 12px 22px;
+
+    border-radius: 7px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    text-decoration: none;
+}
+
+.add-btn:hover {
+    background: #1d4ed8;
+}
+
+
+/* CANCEL BUTTON */
+
+.cancel-btn {
+    background: #e2e8f0;
+
+    color: #334155;
+
+    padding: 12px 22px;
+
+    border-radius: 7px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.cancel-btn:hover {
+    background: #cbd5e1;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .nav-links {
+        gap: 10px;
+    }
+
+    .nav-links a:not(.logout) {
+        display: none;
+    }
+
+    .container {
+        padding: 35px 20px;
+    }
+
+    .form-card {
+        padding: 25px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .add-btn,
+    .cancel-btn {
+        text-align: center;
+    }
+}

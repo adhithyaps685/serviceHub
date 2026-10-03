@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ServiceHub | Loading</title>
+
+    <style>
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+
+        body {
+            overflow: hidden;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f9ff;
+        }
+
+
+        /* =========================================
+           MAIN PAGE
+        ========================================= */
+
+        .splash-page {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f5faff 0%,
+                    #ffffff 48%,
+                    #eef7ff 100%
+                );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* =========================================
+           BACKGROUND DECORATION
+        ========================================= */
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+
+        .circle-one {
+            width: 500px;
+            height: 500px;
+
+            top: -300px;
+            left: -180px;
+
+            background: #dceeff;
+        }
+
+
+        .circle-two {
+            width: 550px;
+            height: 550px;
+
+            right: -300px;
+            bottom: -320px;
+
+            background: #e0f1ff;
+        }
+
+
+        .circle-three {
+            width: 180px;
+            height: 180px;
+
+            right: 13%;
+            top: 12%;
+
+            border: 35px solid #e9f5ff;
+        }
+
+
+        /* =========================================
+           SMALL DOTS
+        ========================================= */
+
+        .dots {
+            position: absolute;
+
+            width: 80px;
+            height: 80px;
+
+            background-image:
+                radial-gradient(
+                    #4e9cf5 2px,
+                    transparent 2px
+                );
+
+            background-size: 18px 18px;
+
+            opacity: 0.45;
+        }
+
+
+        .dots-one {
+            top: 50px;
+            right: 65px;
+        }
+
+
+        .dots-two {
+            bottom: 80px;
+            left: 60px;
+
+            opacity: 0.2;
+        }
+
+
+        /* =========================================
+           MAIN CONTENT
+        ========================================= */
+
+        .content {
+            position: relative;
+
+            width: 90%;
+            max-width: 900px;
+
+            text-align: center;
+
+            z-index: 10;
+        }
+
+
+        /* =========================================
+           LOGO
+        ========================================= */
+
+        .logo-area {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 13px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .logo-icon {
+            position: relative;
+
+            width: 58px;
+            height: 58px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 17px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #1268e8,
+                    #2994ff
+                );
+
+            color: white;
+
+            font-size: 29px;
+
+            box-shadow:
+                0 10px 25px
+                rgba(25, 110, 220, 0.25);
+        }
+
+
+        /* House */
+        .logo-icon::before {
+            content: "⌂";
+
+            font-size: 38px;
+            font-weight: bold;
+
+            line-height: 1;
+        }
+
+
+        /* Wrench */
+        .logo-icon::after {
+            content: "⚒";
+
+            position: absolute;
+
+            right: -9px;
+            bottom: -8px;
+
+            width: 27px;
+            height: 27px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: white;
+
+            color: #1473ed;
+
+            font-size: 15px;
+
+            box-shadow:
+                0 4px 10px
+                rgba(0, 0, 0, 0.15);
+        }
+
+
+        .logo-text {
+            font-size: 34px;
+
+            font-weight: 800;
+
+            letter-spacing: -1.5px;
+
+            color: #153e70;
+        }
+
+
+        .logo-text span {
+            color: #1976f3;
+        }
+
+
+        /* =========================================
+           TAGLINE
+        ========================================= */
+
+        .tagline {
+            display: inline-block;
+
+            padding: 7px 17px;
+
+            border-radius: 30px;
+
+            background: #e8f3ff;
+
+            color: #2572c9;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 18px;
+        }
+
+
+        /* =========================================
+           HEADING
+        ========================================= */
+
+        h1 {
+            font-size: clamp(40px, 5vw, 64px);
+
+            line-height: 1.05;
+
+            font-weight: 800;
+
+            color: #163d70;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 15px;
+        }
+
+
+        h1 span {
+            color: #1877f2;
+        }
+
+
+        /* =========================================
+           DESCRIPTION
+        ========================================= */
+
+        .description {
+            max-width: 570px;
+
+            margin: 0 auto 30px;
+
+            color: #71869f;
+
+            font-size: 17px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================================
+           SERVICE CARDS
+        ========================================= */
+
+        .services {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 18px;
+
+            margin-bottom: 35px;
+        }
+
+
+        .service {
+            width: 90px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: #536d89;
+
+            font-size: 12px;
+
+            font-weight: 600;
+        }
+
+
+        .service-icon {
+            width: 58px;
+            height: 58px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 18px;
+
+            font-size: 25px;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+
+        .service:hover .service-icon {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 10px 20px
+                rgba(0, 0, 0, 0.12);
+        }
+
+
+        /* Individual service colors */
+
+        .electrician {
+            background: #fff2d5;
+            color: #efa900;
+        }
+
+
+        .plumber {
+            background: #e0f0ff;
+            color: #1679df;
+        }
+
+
+        .ac {
+            background: #dcf8ed;
+            color: #18a570;
+        }
+
+
+        .vehicle {
+            background: #eee8ff;
+            color: #7356df;
+        }
+
+
+        .repair {
+            background: #ffe5e9;
+            color: #e34859;
+        }
+
+
+        /* =========================================
+           LOADING AREA
+        ========================================= */
+
+        .loading-area {
+            width: 600px;
+
+            max-width: 90vw;
+
+            margin: 0 auto;
+        }
+
+
+        .loading-info {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 9px;
+
+            font-size: 13px;
+
+            color: #7890aa;
+
+            font-weight: 600;
+        }
+
+
+        #percentage {
+            color: #176fe5;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================
+           PROGRESS BAR
+        ========================================= */
+
+        .progress-container {
+            width: 100%;
+
+            height: 13px;
+
+            padding: 2px;
+
+            border-radius: 20px;
+
+            background: #dce7f2;
+
+            overflow: hidden;
+
+            box-shadow:
+                inset 0 1px 3px
+                rgba(0, 0, 0, 0.08);
+        }
+
+
+        .progress-bar {
+            width: 0%;
+
+            height: 100%;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #126cf0,
+                    #2c93ff
+                );
+
+            transition:
+                width 0.05s linear;
+
+            box-shadow:
+                0 2px 8px
+                rgba(28, 119, 238, 0.35);
+        }
+
+
+        /* =========================================
+           LOADING MESSAGE
+        ========================================= */
+
+        .loading-message {
+            margin-top: 13px;
+
+            color: #8ba0b7;
+
+            font-size: 13px;
+
+            transition: opacity 0.2s ease;
+        }
+
+
+        /* =========================================
+           ANIMATED DOTS
+        ========================================= */
+
+        .loading-dots {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 5px;
+
+            margin-top: 9px;
+        }
+
+
+        .loading-dots span {
+            width: 5px;
+            height: 5px;
+
+            border-radius: 50%;
+
+            background: #4b8ed3;
+
+            animation:
+                bounce 1.2s infinite ease-in-out;
+        }
+
+
+        .loading-dots span:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+
+        .loading-dots span:nth-child(3) {
+            animation-delay: 0.30s;
+        }
+
+
+        @keyframes bounce {
+
+            0%,
+            60%,
+            100% {
+                transform: translateY(0);
+
+                opacity: 0.35;
+            }
+
+            30% {
+                transform: translateY(-5px);
+
+                opacity: 1;
+            }
+        }
+
+
+        /* =========================================
+           BOTTOM DECORATION
+        ========================================= */
+
+        .bottom-wave {
+            position: absolute;
+
+            bottom: -65px;
+            left: -5%;
+
+            width: 110%;
+            height: 130px;
+
+            background: #dceeff;
+
+            border-radius: 50% 50% 0 0;
+
+            z-index: 1;
+        }
+
+
+        .bottom-wave-two {
+            position: absolute;
+
+            bottom: -90px;
+            left: 35%;
+
+            width: 75%;
+            height: 130px;
+
+            background: #c9e4ff;
+
+            border-radius: 50% 50% 0 0;
+
+            z-index: 2;
+        }
+
+
+        /* =========================================
+           SMALL HOUSE ILLUSTRATION
+        ========================================= */
+
+        .house {
+            position: absolute;
+
+            right: 9%;
+            bottom: 35px;
+
+            width: 130px;
+            height: 100px;
+
+            z-index: 4;
+        }
+
+
+        .house-body {
+            position: absolute;
+
+            left: 20px;
+            bottom: 0;
+
+            width: 90px;
+            height: 62px;
+
+            background: white;
+
+            border: 3px solid #bcd7f0;
+
+            border-radius: 5px;
+        }
+
+
+        .roof {
+            position: absolute;
+
+            left: 18px;
+            top: 15px;
+
+            width: 92px;
+            height: 92px;
+
+            background: #216fc5;
+
+            transform: rotate(45deg) scale(0.7);
+
+            border-radius: 8px;
+
+            z-index: -1;
+        }
+
+
+        .window {
+            position: absolute;
+
+            top: 14px;
+
+            width: 20px;
+            height: 20px;
+
+            background: #a9d5ff;
+
+            border: 3px solid #357fc8;
+        }
+
+
+        .window-one {
+            left: 12px;
+        }
+
+
+        .window-two {
+            right: 12px;
+        }
+
+
+        .door {
+            position: absolute;
+
+            bottom: 0;
+            left: 35px;
+
+            width: 22px;
+            height: 38px;
+
+            background: #245c98;
+
+            border-radius:
+                5px 5px 0 0;
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 800px) {
+
+            .logo-text {
+                font-size: 28px;
+            }
+
+            h1 {
+                font-size: 44px;
+            }
+
+            .description {
+                font-size: 15px;
+            }
+
+            .services {
+                gap: 10px;
+            }
+
+            .service {
+                width: 70px;
+            }
+
+            .service-icon {
+                width: 50px;
+                height: 50px;
+
+                font-size: 21px;
+            }
+
+            .house {
+                transform: scale(0.7);
+
+                transform-origin:
+                    bottom right;
+
+                right: 0;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            .logo-area {
+                margin-bottom: 14px;
+            }
+
+            .logo-icon {
+                width: 46px;
+                height: 46px;
+            }
+
+            .logo-text {
+                font-size: 24px;
+            }
+
+            .tagline {
+                font-size: 9px;
+
+                letter-spacing: 1px;
+            }
+
+            h1 {
+                font-size: 35px;
+
+                letter-spacing: -1px;
+            }
+
+            .description {
+                font-size: 13px;
+
+                margin-bottom: 20px;
+            }
+
+            .services {
+                gap: 4px;
+
+                margin-bottom: 25px;
+            }
+
+            .service {
+                width: 58px;
+
+                font-size: 9px;
+            }
+
+            .service-icon {
+                width: 42px;
+                height: 42px;
+
+                font-size: 17px;
+
+                border-radius: 13px;
+            }
+
+            .house {
+                display: none;
+            }
+
+            .bottom-wave {
+                height: 80px;
+            }
+
+            .bottom-wave-two {
+                height: 80px;
+            }
+
+            .dots-one {
+                right: 10px;
+                top: 35px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="splash-page">
+
+
+    <!-- =========================================
+         BACKGROUND DECORATION
+    ========================================== -->
+
+    <div class="circle circle-one"></div>
+
+    <div class="circle circle-two"></div>
+
+    <div class="circle circle-three"></div>
+
+    <div class="dots dots-one"></div>
+
+    <div class="dots dots-two"></div>
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+
+    <div class="content">
+
+
+        <!-- LOGO -->
+
+        <div class="logo-area">
+
+            <div class="logo-icon"></div>
+
+            <div class="logo-text">
+                Service<span>Hub</span>
+            </div>
+
+        </div>
+
+
+        <!-- TAGLINE -->
+
+        <div class="tagline">
+            YOUR SERVICE, OUR PRIORITY
+        </div>
+
+
+        <!-- HEADING -->
+
+        <h1>
+            Welcome to <span>ServiceHub</span>
+        </h1>
+
+
+        <!-- DESCRIPTION -->
+
+        <p class="description">
+            Connecting you with trusted professionals
+            for all your home and vehicle service needs.
+        </p>
+
+
+        <!-- =========================================
+             SERVICES
+        ========================================== -->
+
+        <div class="services">
+
+
+            <div class="service">
+
+                <div class="service-icon electrician">
+                    ⚡
+                </div>
+
+                <span>
+                    Electrician
+                </span>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="service-icon plumber">
+                    🔧
+                </div>
+
+                <span>
+                    Plumber
+                </span>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="service-icon ac">
+                    ❄
+                </div>
+
+                <span>
+                    AC Service
+                </span>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="service-icon vehicle">
+                    🚗
+                </div>
+
+                <span>
+                    Vehicle
+                </span>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="service-icon repair">
+                    🛠
+                </div>
+
+                <span>
+                    Repair
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =========================================
+             LOADING
+        ========================================== -->
+
+        <div class="loading-area">
+
+
+            <div class="loading-info">
+
+                <span id="loadingText">
+                    Preparing your services...
+                </span>
+
+                <span id="percentage">
+                    0%
+                </span>
+
+            </div>
+
+
+            <div class="progress-container">
+
+                <div
+                    class="progress-bar"
+                    id="progressBar">
+                </div>
+
+            </div>
+
+
+            <div class="loading-message"
+                 id="loadingMessage">
+
+                Finding trusted professionals...
+
+            </div>
+
+
+            <div class="loading-dots">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =========================================
+         HOUSE ILLUSTRATION
+    ========================================== -->
+
+    <div class="house">
+
+        <div class="roof"></div>
+
+        <div class="house-body">
+
+            <div class="window window-one"></div>
+
+            <div class="window window-two"></div>
+
+            <div class="door"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         BOTTOM DECORATION
+    ========================================== -->
+
+    <div class="bottom-wave"></div>
+
+    <div class="bottom-wave-two"></div>
+
+
+</div>
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script>
+
+    let progress = 0;
+
+    const progressBar =
+        document.getElementById("progressBar");
+
+    const percentage =
+        document.getElementById("percentage");
+
+    const loadingText =
+        document.getElementById("loadingText");
+
+    const loadingMessage =
+        document.getElementById("loadingMessage");
+
+
+    const messages = [
+
+        "Preparing your services...",
+
+        "Finding trusted professionals...",
+
+        "Connecting service providers...",
+
+        "Getting everything ready...",
+
+        "Almost there..."
+
+    ];
+
+
+    let messageIndex = 0;
+
+
+    const loading = setInterval(function () {
+
+
+        progress++;
+
+
+        /* Update progress bar */
+
+        progressBar.style.width =
+            progress + "%";
+
+
+        /* Update percentage */
+
+        percentage.textContent =
+            progress + "%";
+
+
+        /* Change messages */
+
+        if (
+            progress % 20 === 0 &&
+            messageIndex < messages.length
+        ) {
+
+            loadingText.style.opacity = "0";
+
+            loadingMessage.style.opacity = "0";
+
+
+            setTimeout(function () {
+
+                loadingText.textContent =
+                    messages[messageIndex];
+
+                loadingMessage.textContent =
+                    messages[messageIndex];
+
+
+                loadingText.style.opacity = "1";
+
+                loadingMessage.style.opacity = "1";
+
+
+                messageIndex++;
+
+            }, 150);
+
+        }
+
+
+        /* Finish */
+
+        if (progress >= 100) {
+
+
+            clearInterval(loading);
+
+
+            loadingText.textContent =
+                "Welcome to ServiceHub!";
+
+
+            loadingMessage.textContent =
+                "Your services are ready";
+
+
+            setTimeout(function () {
+
+                window.location.href =
+                    "{% url 'home' %}";
+
+            }, 700);
+
+        }
+
+
+    }, 30);
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1097 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Customer Dashboard | ServiceHub</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="{% static 'css/customer.css' %}?v=2">
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-expand-lg customer-navbar">
+
+    <div class="container">
+
+        <a class="navbar-brand service-logo"
+           href="{% url 'customer' %}">
+
+            <i class="fa-solid fa-house-circle-check"></i>
+
+            Service<span>Hub</span>
+
+        </a>
+
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#customerNav">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <div class="collapse navbar-collapse"
+             id="customerNav">
+
+            <ul class="navbar-nav mx-auto">
+
+                <li class="nav-item">
+
+                    <a class="nav-link active"
+                       href="{% url 'customer' %}">
+
+                        Dashboard
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="#services">
+
+                        Services
+
+                    </a>
+
+                </li>
+
+
+                
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="#bookings">
+
+                        My Bookings
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+
+            <div class="customer-profile">
+
+                <div class="profile-circle">
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+                <span>
+                    {{ user.first_name }}
+                </span>
+
+
+                <a href="{% url 'logout' %}"
+                   class="logout-link">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="customer-hero">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <div class="hero-text">
+
+                <span class="hero-small-title">
+                    SERVICEHUB CUSTOMER
+                </span>
+
+
+                <h1>
+                    Hello, {{ user.first_name }}
+                </h1>
+
+
+                <h2>
+                    What service do you need today?
+                </h2>
+
+
+                <p>
+                    Find trusted professionals for your
+                    home and vehicle service needs.
+                </p>
+
+
+                <a href="{% url 'booking' %}"
+                   class="book-service-btn">
+
+                    <i class="fa-solid fa-calendar-plus"></i>
+
+                    <span>
+                        Book a Service
+                    </span>
+
+                </a>
+
+            </div>
+
+
+            <div class="hero-box">
+
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                <h3>
+                    Professional Services
+                </h3>
+
+                <p>
+                    Reliable workers.
+                    Quality service.
+                    Easy booking.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= SEARCH ================= -->
+
+<form method="GET"
+      action="{% url 'workers' %}"
+      class="search-box">
+
+    <i class="fa-solid fa-magnifying-glass"></i>
+
+
+    <input
+        type="text"
+        name="service"
+        id="serviceSearch"
+        placeholder="Search for a service..."
+        required
+    >
+
+
+    <button type="submit"
+            id="searchServiceBtn">
+
+        Search
+
+    </button>
+
+</form>
+
+
+
+<!-- ================= SERVICES ================= -->
+
+<section class="services-section"
+         id="services">
+
+    <div class="container">
+
+
+        <div class="section-title">
+
+            <span>
+                OUR SERVICES
+            </span>
+
+
+            <h2>
+                Choose a Service
+            </h2>
+
+
+            <p>
+                Select a service and find professionals
+                who can help you.
+            </p>
+
+        </div>
+
+
+
+        <div class="row g-4">
+
+
+            <!-- ELECTRICIAN -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <a href="{% url 'workers' %}?service=Electrician"
+                   class="service-card"
+                   data-service="Electrician">
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-bolt"></i>
+
+                    </div>
+
+
+                    <h3>
+                        Electrician
+                    </h3>
+
+
+                    <p>
+                        Electrical installation,
+                        repair and maintenance.
+                    </p>
+
+
+                    <span>
+
+                        Find Workers
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </span>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- PLUMBER -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <a href="{% url 'workers' %}?service=Plumber"
+                   class="service-card"
+                   data-service="Plumber">
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-faucet"></i>
+
+                    </div>
+
+
+                    <h3>
+                        Plumber
+                    </h3>
+
+
+                    <p>
+                        Plumbing repair,
+                        installation and maintenance.
+                    </p>
+
+
+                    <span>
+
+                        Find Workers
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </span>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- AC -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <a href="{% url 'workers' %}?service=AC%20Repair"
+                   class="service-card"
+                   data-service="AC Repair">
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-snowflake"></i>
+
+                    </div>
+
+
+                    <h3>
+                        AC Repair
+                    </h3>
+
+
+                    <p>
+                        AC installation,
+                        repair and maintenance.
+                    </p>
+
+
+                    <span>
+
+                        Find Workers
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </span>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- CAR -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <a href="{% url 'workers' %}?service=Car%20Service"
+                   class="service-card"
+                   data-service="Car Service">
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-car"></i>
+
+                    </div>
+
+
+                    <h3>
+                        Car Service
+                    </h3>
+
+
+                    <p>
+                        Professional vehicle
+                        maintenance and repair.
+                    </p>
+
+
+                    <span>
+
+                        Find Workers
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="row g-4 mt-1">
+
+
+            <!-- BIKE -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <a href="{% url 'workers' %}?service=Bike%20Service"
+                   class="service-card"
+                   data-service="Bike Service">
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-motorcycle"></i>
+
+                    </div>
+
+
+                    <h3>
+                        Bike Service
+                    </h3>
+
+
+                    <p>
+                        Complete bike servicing
+                        and maintenance.
+                    </p>
+
+
+                    <span>
+
+                        Find Workers
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </span>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- VEHICLE WASH -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <a href="{% url 'workers' %}?service=Vehicle%20Wash"
+                   class="service-card"
+                   data-service="Vehicle Wash">
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-droplet"></i>
+
+                    </div>
+
+
+                    <h3>
+                        Vehicle Wash
+                    </h3>
+
+
+                    <p>
+                        Professional cleaning
+                        for your vehicle.
+                    </p>
+
+
+                    <span>
+
+                        Find Workers
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </span>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- HOME MAINTENANCE -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <a href="{% url 'workers' %}?service=Home%20Maintenance"
+                   class="service-card"
+                   data-service="Home Maintenance">
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-house"></i>
+
+                    </div>
+
+
+                    <h3>
+                        Home Maintenance
+                    </h3>
+
+
+                    <p>
+                        General maintenance
+                        services for your home.
+                    </p>
+
+
+                    <span>
+
+                        Find Workers
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </span>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- MORE -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <a href="#services"
+                   class="service-card more-card">
+
+                    <div class="service-icon">
+
+                        <i class="fa-solid fa-ellipsis"></i>
+
+                    </div>
+
+
+                    <h3>
+                        More Services
+                    </h3>
+
+
+                    <p>
+                        Explore more services
+                        available on ServiceHub.
+                    </p>
+
+
+                    <span>
+
+                        Explore
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= BOOKINGS ================= -->
+
+<section class="bookings-section"
+         id="bookings">
+
+    <div class="container">
+
+
+        <div class="section-title">
+
+            <span>
+                MY BOOKINGS
+            </span>
+
+
+            <h2>
+                Recent Bookings
+            </h2>
+
+
+            <p>
+                View and track all your service bookings.
+            </p>
+
+        </div>
+
+
+
+        {% if bookings %}
+
+
+        <div class="customer-bookings-list">
+
+
+            {% for booking in bookings %}
+
+
+            <div class="customer-booking-card">
+
+
+                <!-- SERVICE ICON -->
+
+                <div class="customer-booking-icon">
+
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                </div>
+
+
+
+                <!-- BOOKING INFORMATION -->
+
+                <div class="customer-booking-info">
+
+
+                    <!-- TITLE + STATUS -->
+
+                    <div class="booking-title-row">
+
+
+                        <h3>
+                            {{ booking.service.name }}
+                        </h3>
+
+
+
+                        {% if booking.status == "PENDING" %}
+
+
+                        <span class="customer-status pending">
+
+                            <i class="fa-solid fa-clock"></i>
+
+                            Pending
+
+                        </span>
+
+
+
+                        {% elif booking.status == "COMPLETED" %}
+
+
+                        <span class="customer-status completed">
+
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            Completed
+
+                        </span>
+
+
+
+                        {% else %}
+
+
+                        <span class="customer-status">
+
+                            {{ booking.status }}
+
+                        </span>
+
+
+                        {% endif %}
+
+
+                    </div>
+
+
+
+                    <!-- ================= RATING ================= -->
+
+                    {% if booking.status == "COMPLETED" %}
+
+                        {% if not booking.rating %}
+
+                        <div class="rating-action">
+
+                            <a href="{% url 'rate_worker' booking.id %}"
+                               class="btn btn-primary">
+
+                                <i class="fa-solid fa-star"></i>
+
+                                Give Rating
+
+                            </a>
+
+                        </div>
+
+
+                        {% else %}
+
+                        <div class="rating-submitted">
+
+                            <span class="text-success">
+
+                                <i class="fa-solid fa-star"></i>
+
+                                You rated this worker
+
+                            </span>
+
+                        </div>
+
+                        {% endif %}
+
+                    {% endif %}
+
+
+
+                    <!-- ================= BOOKING DETAILS ================= -->
+
+                    <div class="booking-info-grid">
+
+
+                        <!-- PROFESSIONAL -->
+
+                        <div class="booking-info-item">
+
+                            <i class="fa-solid fa-user"></i>
+
+
+                            <div>
+
+                                <small>
+                                    Professional
+                                </small>
+
+
+                                <strong>
+                                    {{ booking.worker.user.get_full_name }}
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- PHONE -->
+
+                        <div class="booking-info-item">
+
+                            <i class="fa-solid fa-phone"></i>
+
+
+                            <div>
+
+                                <small>
+                                    Phone
+                                </small>
+
+
+                                <strong>
+                                    {{ booking.worker.phone }}
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- DATE -->
+
+                        <div class="booking-info-item">
+
+                            <i class="fa-solid fa-calendar"></i>
+
+
+                            <div>
+
+                                <small>
+                                    Date
+                                </small>
+
+
+                                <strong>
+                                    {{ booking.booking_date }}
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- TIME -->
+
+                        <div class="booking-info-item">
+
+                            <i class="fa-solid fa-clock"></i>
+
+
+                            <div>
+
+                                <small>
+                                    Time
+                                </small>
+
+
+                                <strong>
+                                    {{ booking.booking_time }}
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- ADDRESS -->
+
+                        <div class="booking-info-item booking-address">
+
+                            <i class="fa-solid fa-location-dot"></i>
+
+
+                            <div>
+
+                                <small>
+                                    Service Address
+                                </small>
+
+
+                                <strong>
+                                    {{ booking.address }}
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- DESCRIPTION -->
+
+                    {% if booking.description %}
+
+
+                    <div class="booking-description">
+
+                        <i class="fa-solid fa-message"></i>
+
+
+                        <span>
+                            {{ booking.description }}
+                        </span>
+
+                    </div>
+
+
+                    {% endif %}
+
+
+                </div>
+
+            </div>
+
+
+            {% endfor %}
+
+
+        </div>
+
+
+
+        {% else %}
+
+
+        <!-- NO BOOKINGS -->
+
+        <div class="customer-no-bookings">
+
+
+            <div class="no-bookings-icon">
+
+                <i class="fa-solid fa-calendar-xmark"></i>
+
+            </div>
+
+
+            <h3>
+                No Bookings Yet
+            </h3>
+
+
+            <p>
+                You haven't booked any service yet.
+            </p>
+
+
+            <a href="{% url 'booking' %}"
+               class="book-now-btn">
+
+                <i class="fa-solid fa-calendar-plus"></i>
+
+                Book a Service
+
+            </a>
+
+
+        </div>
+
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="customer-footer">
+
+    <div class="container">
+
+
+        <div class="footer-main">
+
+
+            <div>
+
+                <h3>
+
+                    <i class="fa-solid fa-house-circle-check"></i>
+
+                    Service<span>Hub</span>
+
+                </h3>
+
+
+                <p>
+
+                    Connecting customers with trusted
+                    home and vehicle service professionals.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="footer-links">
+
+                <a href="#services">
+                    Services
+                </a>
+
+
+                <a href="#workers">
+                    Professionals
+                </a>
+
+
+                <a href="#bookings">
+                    Bookings
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <hr>
+
+
+        <p class="copyright">
+
+            © 2026 ServiceHub. All Rights Reserved.
+
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- ================= BOOTSTRAP ================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+
+<!-- ================= SEARCH SCRIPT ================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const searchInput =
+        document.getElementById("serviceSearch");
+
+    const searchButton =
+        document.getElementById("searchServiceBtn");
+
+    const serviceCards =
+        document.querySelectorAll(".service-card");
+
+
+    function searchServices() {
+
+        const searchText =
+            searchInput.value.trim().toLowerCase();
+
+
+        serviceCards.forEach(function (card) {
+
+            const serviceName =
+                card.getAttribute("data-service");
+
+
+            if (!serviceName) {
+                return;
+            }
+
+
+            if (
+                searchText === "" ||
+                serviceName.toLowerCase().includes(searchText)
+            ) {
+
+                card.style.display = "";
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+
+    searchButton.addEventListener(
+        "click",
+        searchServices
+    );
+
+
+    searchInput.addEventListener(
+        "keyup",
+        function (event) {
+
+            if (event.key === "Enter") {
+
+                searchServices();
+
+            }
+
+        }
+    );
+
+});
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | ServiceHub</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/admin_dashboard.css' %}">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        Service<span>Hub</span>
+    </div>
+
+    <div class="nav-right">
+
+        <span class="admin-name">
+            Admin
+        </span>
+
+        <a href="{% url 'admin_logout' %}">
+    <i class="fa-solid fa-right-from-bracket"></i>
+    Logout
+</a>
+
+    </div>
+
+</nav>
+
+
+<!-- MAIN -->
+
+<div class="dashboard-container">
+
+    <div class="welcome">
+
+        <h1>Admin Dashboard</h1>
+
+        <p>
+            Manage ServiceHub users, services and bookings.
+        </p>
+
+    </div>
+
+
+    <!-- DASHBOARD CARDS -->
+
+    <div class="dashboard-grid">
+
+        <!-- SERVICES -->
+
+        <div class="dashboard-card">
+
+            <div class="icon">
+                ⚙
+            </div>
+
+            <h2>Services</h2>
+
+            <p>
+                Add, edit and remove services available
+                on ServiceHub.
+            </p>
+
+            <a href="{% url 'service_management' %}"
+               class="card-btn">
+                Manage Services
+            </a>
+
+        </div>
+
+
+        <!-- WORKERS -->
+
+        <div class="dashboard-card">
+
+            <div class="icon">
+                👨‍🔧
+            </div>
+
+            <h2>Workers</h2>
+
+            <p>
+                Review and manage registered service
+                professionals.
+            </p>
+
+            <a href="{% url 'worker_management' %}" class="card-btn">
+                Manage Workers
+            </a>
+
+        </div>
+
+
+        <!-- CUSTOMERS -->
+
+        <div class="dashboard-card">
+
+            <div class="icon">
+                👤
+            </div>
+
+            <h2>Customers</h2>
+
+            <p>
+                View registered customers and their
+                information.
+            </p>
+
+            <a href="{% url 'customer_management' %}" class="card-btn">
+                View Customers
+            </a>
+
+        </div>
+
+
+        <!-- BOOKINGS -->
+
+        <div class="dashboard-card">
+
+            <div class="icon">
+                📅
+            </div>
+
+            <h2>Bookings</h2>
+
+            <p>
+                Monitor and manage customer service
+                bookings.
+            </p>
+
+            <a href="{% url 'booking_management' %}" class="card-btn">
+                View Bookings
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

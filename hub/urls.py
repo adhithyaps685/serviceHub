@@ -1,0 +1,31 @@
+from django.contrib import admin
+from django.urls import path
+from . import views 
+urlpatterns = [
+    path("", views.splash, name="splash"),
+    path("home/", views.home,name="home"),
+    path('register/', views.register, name='register'),
+    path('login/', views.login, name='login'),
+    path("customer/", views.customer, name="customer"),
+    path("logout/", views.logout, name="logout"),
+    path("worker-register/",views.worker_register,name="worker_register"),
+    path("worker-login/",views.worker_login,name="worker_login"),
+    path("worker/", views.worker, name="worker"),
+    path("booking/", views.booking, name="booking"),
+    path("admin-login/", views.admin_login, name="admin_login"),
+    path("admin-logout/", views.admin_logout, name="admin_logout"),
+    path("admin-dashboard/", views.admin_dashboard, name="admin_dashboard"),
+    path("service-management/", views.service_management, name="service_management"),
+    path("add-service/", views.add_service, name="add_service"),
+    path("edit-service/<int:service_id>/",views.edit_service,name="edit_service"),
+    path("delete-service/<int:service_id>/",views.delete_service,name="delete_service"),
+    path("worker-management/",views.worker_management,name="worker_management"),
+    path("customer-management/",views.customer_management,name="customer_management"),
+    path("booking-management/",views.booking_management,name="booking_management"),
+    path("rate-worker/<int:booking_id>/",views.rate_worker,name="rate_worker"),
+    path("workers/", views.workers, name="workers"),
+    path("approve-worker/<int:worker_id>/",views.approve_worker,name="approve_worker"),
+    path("reject-worker/<int:worker_id>/",views.reject_worker,name="reject_worker"),
+    path("complete-booking/<int:booking_id>/",views.complete_booking,name="complete_booking"),
+    path("edit-worker-profile/",views.edit_worker_profile,name="edit_worker_profile"),
+]

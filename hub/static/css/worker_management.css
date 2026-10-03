@@ -1,0 +1,387 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f8fafc;
+    color: #334155;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    height: 70px;
+
+    background: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 50px;
+
+    border-bottom: 1px solid #e2e8f0;
+
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 700;
+    color: #172554;
+}
+
+.logo span {
+    color: #2563eb;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #475569;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.nav-links a:hover {
+    color: #2563eb;
+}
+
+.nav-links .logout {
+    background: #ef4444;
+    color: #ffffff;
+
+    padding: 9px 16px;
+
+    border-radius: 6px;
+}
+
+.nav-links .logout:hover {
+    background: #dc2626;
+}
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container {
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 45px 30px;
+}
+
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.page-header {
+    margin-bottom: 30px;
+}
+
+.page-header h1 {
+    color: #172554;
+
+    font-size: 30px;
+
+    margin-bottom: 8px;
+}
+
+.page-header p {
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   MESSAGES
+========================= */
+
+.message {
+    background: #dcfce7;
+
+    color: #166534;
+
+    border: 1px solid #bbf7d0;
+
+    padding: 12px 15px;
+
+    border-radius: 7px;
+
+    margin-bottom: 25px;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+section {
+    margin-bottom: 45px;
+}
+
+section h2 {
+    color: #172554;
+
+    font-size: 22px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   PENDING REQUEST GRID
+========================= */
+
+.request-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 22px;
+}
+
+
+/* =========================
+   WORKER CARD
+========================= */
+
+.worker-card {
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 10px;
+
+    padding: 25px;
+
+    box-shadow: 0 5px 15px rgba(15, 23, 42, 0.05);
+
+    transition: 0.2s;
+}
+
+.worker-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+.worker-card h3 {
+    color: #172554;
+
+    font-size: 20px;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================
+   WORKER INFORMATION
+========================= */
+
+.worker-info {
+    border-top: 1px solid #e2e8f0;
+
+    padding-top: 15px;
+
+    margin-bottom: 20px;
+}
+
+.worker-info p {
+    font-size: 14px;
+
+    color: #64748b;
+
+    margin-bottom: 10px;
+
+    line-height: 1.5;
+}
+
+.worker-info strong {
+    color: #334155;
+}
+
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.actions {
+    display: flex;
+
+    gap: 10px;
+
+    padding-top: 5px;
+}
+
+.actions form {
+    margin: 0;
+}
+
+.approve-btn,
+.reject-btn {
+    border: none;
+
+    padding: 10px 18px;
+
+    border-radius: 6px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* APPROVE */
+
+.approve-btn {
+    background: #16a34a;
+
+    color: #ffffff;
+}
+
+.approve-btn:hover {
+    background: #15803d;
+}
+
+
+/* REJECT */
+
+.reject-btn {
+    background: #ef4444;
+
+    color: #ffffff;
+}
+
+.reject-btn:hover {
+    background: #dc2626;
+}
+
+
+/* =========================
+   EMPTY BOX
+========================= */
+
+.empty-box {
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 10px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    color: #94a3b8;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   APPROVED WORKERS
+========================= */
+
+.approved-section {
+    margin-top: 10px;
+}
+
+.table-card {
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 10px;
+
+    overflow-x: auto;
+
+    box-shadow: 0 5px 15px rgba(15, 23, 42, 0.05);
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 850px;
+}
+
+thead {
+    background: #eff6ff;
+}
+
+th {
+    text-align: left;
+
+    padding: 15px;
+
+    color: #172554;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    border-bottom: 1px solid #dbeafe;
+}
+
+td {
+    padding: 15px;
+
+    color: #475569;
+
+    font-size: 14px;
+
+    border-bottom: 1px solid #e2e8f0;
+}
+
+tbody tr:hover {
+    background: #f8fafc;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 800px) {
+
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .container {
+        padding: 35px 20px;
+    }
+
+    .request-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-links {
+        gap: 10px;
+    }
+
+    .nav-links a:not(.logout) {
+        display: none;
+    }
+}

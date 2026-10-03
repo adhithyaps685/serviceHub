@@ -1,0 +1,995 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Register | ServiceHub</title>
+
+
+    <!-- Bootstrap -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+
+    <!-- Font Awesome -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+
+            margin: 0;
+
+            background: #f5f8fc;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: #173b6c;
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .register-wrapper {
+
+            width: 100%;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: flex-start;
+
+            padding: 45px 20px;
+        }
+
+
+        .register-card {
+
+            width: 100%;
+
+            max-width: 680px;
+
+            background: white;
+
+            padding: 40px 45px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 8px 30px
+                rgba(23, 59, 108, 0.08);
+        }
+
+
+        /* =========================
+           HEADING
+        ========================= */
+
+        .register-title {
+
+            text-align: center;
+
+            color: #173b6c;
+
+            font-size: 34px;
+
+            font-weight: 700;
+
+            margin-bottom: 8px;
+        }
+
+
+        .register-subtitle {
+
+            text-align: center;
+
+            color: #657c98;
+
+            font-size: 17px;
+
+            margin-bottom: 32px;
+        }
+
+
+        /* =========================
+           FIELD
+        ========================= */
+
+        .form-field {
+
+            margin-bottom: 21px;
+        }
+
+
+        .form-field label {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #102f58;
+
+            font-size: 16px;
+
+            font-weight: 600;
+        }
+
+
+        /* =========================
+           INPUT GROUP
+        ========================= */
+
+        .input-wrapper {
+
+            display: flex;
+
+            width: 100%;
+
+            border: 1px solid #d8e2ef;
+
+            border-radius: 8px;
+
+            overflow: hidden;
+
+            background: white;
+
+            transition: 0.2s;
+        }
+
+
+        .input-wrapper:focus-within {
+
+            border-color: #2775e8;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(39, 117, 232, 0.10);
+        }
+
+
+        .input-icon {
+
+            width: 44px;
+
+            min-width: 44px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #edf4ff;
+
+            color: #2775e8;
+
+            font-size: 16px;
+        }
+
+
+        .input-wrapper input,
+        .input-wrapper textarea {
+
+            width: 100%;
+
+            border: none;
+
+            outline: none;
+
+            padding: 13px 15px;
+
+            font-size: 16px;
+
+            color: #243f62;
+
+            background: white;
+        }
+
+
+        .input-wrapper textarea {
+
+            min-height: 105px;
+
+            resize: vertical;
+        }
+
+
+        .input-wrapper input::placeholder,
+        .input-wrapper textarea::placeholder {
+
+            color: #71839a;
+        }
+
+
+        /* =========================
+           ERROR MESSAGE
+        ========================= */
+
+        .field-error {
+
+            display: block;
+
+            margin-top: 6px;
+
+            color: #dc3545;
+
+            font-size: 13px;
+
+            font-weight: 500;
+        }
+
+
+        /* =========================
+           DJANGO MESSAGE
+        ========================= */
+
+        .message-box {
+
+            padding: 12px 15px;
+
+            border-radius: 8px;
+
+            margin-bottom: 20px;
+
+            font-size: 14px;
+        }
+
+
+        .message-success {
+
+            background: #e8f7ee;
+
+            color: #198754;
+
+            border: 1px solid #b8e5c9;
+        }
+
+
+        .message-error {
+
+            background: #fff0f1;
+
+            color: #dc3545;
+
+            border: 1px solid #f1c0c5;
+        }
+
+
+        /* =========================
+           REGISTER BUTTON
+        ========================= */
+
+        .register-btn {
+
+            width: 100%;
+
+            border: none;
+
+            border-radius: 9px;
+
+            padding: 13px;
+
+            background: #216fe8;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .register-btn:hover {
+
+            background: #155bc7;
+
+            transform: translateY(-1px);
+        }
+
+
+        /* =========================
+           LOGIN LINK
+        ========================= */
+
+        .login-link {
+
+            text-align: center;
+
+            margin-top: 22px;
+
+            color: #71839a;
+
+            font-size: 14px;
+        }
+
+
+        .login-link a {
+
+            color: #216fe8;
+
+            text-decoration: none;
+
+            font-weight: 600;
+        }
+
+
+        .login-link a:hover {
+
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .register-wrapper {
+
+                padding: 20px 12px;
+            }
+
+            .register-card {
+
+                padding: 30px 20px;
+            }
+
+            .register-title {
+
+                font-size: 28px;
+            }
+
+            .register-subtitle {
+
+                font-size: 14px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="register-wrapper">
+
+
+    <div class="register-card">
+
+
+        <h1 class="register-title">
+            Create Your Account
+        </h1>
+
+
+        <p class="register-subtitle">
+            Register as a customer and book trusted
+            home and vehicle services.
+        </p>
+
+
+        <!-- =========================
+             DJANGO MESSAGES
+        ========================= -->
+
+        {% if messages %}
+
+            {% for message in messages %}
+
+                <div class="message-box message-success">
+
+                    {{ message }}
+
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+
+        <!-- =========================
+             FORM
+        ========================= -->
+
+        <form method="POST"
+              id="registerForm">
+
+            {% csrf_token %}
+
+
+            <!-- NAME -->
+
+            <div class="form-field">
+
+                <label for="name">
+                    Full Name
+                </label>
+
+                <div class="input-wrapper">
+
+                    <span class="input-icon">
+
+                        <i class="fa-solid fa-user"></i>
+
+                    </span>
+
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value="{{ name|default:'' }}"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                    >
+
+                </div>
+
+
+                {% if errors.name %}
+
+                    <small class="field-error">
+                        {{ errors.name }}
+                    </small>
+
+                {% endif %}
+
+                <small
+                    class="field-error"
+                    id="nameError">
+                </small>
+
+            </div>
+
+
+
+            <!-- EMAIL -->
+
+            <div class="form-field">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <div class="input-wrapper">
+
+                    <span class="input-icon">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                    </span>
+
+
+                    <input
+                        type="text"
+                        id="email"
+                        name="email"
+                        value="{{ email|default:'' }}"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                    >
+
+                </div>
+
+
+                {% if errors.email %}
+
+                    <small class="field-error">
+                        {{ errors.email }}
+                    </small>
+
+                {% endif %}
+
+                <small
+                    class="field-error"
+                    id="emailError">
+                </small>
+
+            </div>
+
+
+
+            <!-- PHONE -->
+
+            <div class="form-field">
+
+                <label for="phone">
+                    Phone Number
+                </label>
+
+                <div class="input-wrapper">
+
+                    <span class="input-icon">
+
+                        <i class="fa-solid fa-phone"></i>
+
+                    </span>
+
+
+                    <input
+                        type="text"
+                        id="phone"
+                        name="phone"
+                        value="{{ phone|default:'' }}"
+                        placeholder="Enter your phone number"
+                        maxlength="10"
+                        inputmode="numeric"
+                    >
+
+                </div>
+
+
+                {% if errors.phone %}
+
+                    <small class="field-error">
+                        {{ errors.phone }}
+                    </small>
+
+                {% endif %}
+
+                <small
+                    class="field-error"
+                    id="phoneError">
+                </small>
+
+            </div>
+
+
+
+            <!-- ADDRESS -->
+
+            <div class="form-field">
+
+                <label for="address">
+                    Address
+                </label>
+
+                <div class="input-wrapper">
+
+                    <span class="input-icon">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                    </span>
+
+
+                    <textarea
+                        id="address"
+                        name="address"
+                        placeholder="Enter your address"
+                    >{{ address|default:'' }}</textarea>
+
+                </div>
+
+
+                {% if errors.address %}
+
+                    <small class="field-error">
+                        {{ errors.address }}
+                    </small>
+
+                {% endif %}
+
+                <small
+                    class="field-error"
+                    id="addressError">
+                </small>
+
+            </div>
+
+
+
+            <!-- PASSWORD -->
+
+            <div class="form-field">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <div class="input-wrapper">
+
+                    <span class="input-icon">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                    </span>
+
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        autocomplete="new-password"
+                    >
+
+                </div>
+
+
+                {% if errors.password %}
+
+                    <small class="field-error">
+                        {{ errors.password }}
+                    </small>
+
+                {% endif %}
+
+                <small
+                    class="field-error"
+                    id="passwordError">
+                </small>
+
+            </div>
+
+
+
+            <!-- CONFIRM PASSWORD -->
+
+            <div class="form-field">
+
+                <label for="confirm_password">
+                    Confirm Password
+                </label>
+
+                <div class="input-wrapper">
+
+                    <span class="input-icon">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                    </span>
+
+
+                    <input
+                        type="password"
+                        id="confirm_password"
+                        name="confirm_password"
+                        placeholder="Confirm your password"
+                        autocomplete="new-password"
+                    >
+
+                </div>
+
+
+                {% if errors.confirm_password %}
+
+                    <small class="field-error">
+                        {{ errors.confirm_password }}
+                    </small>
+
+                {% endif %}
+
+                <small
+                    class="field-error"
+                    id="confirmPasswordError">
+                </small>
+
+            </div>
+
+
+
+            <!-- BUTTON -->
+
+            <button
+                type="submit"
+                class="register-btn">
+
+                <i class="fa-solid fa-user-plus"></i>
+
+                Create Account
+
+            </button>
+
+
+        </form>
+
+
+        <!-- LOGIN -->
+
+        <div class="login-link">
+
+            Already have an account?
+
+            <a href="{% url 'login' %}">
+                Login here
+            </a>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================
+     JAVASCRIPT VALIDATION
+===================================== -->
+
+<script>
+
+const form =
+    document.getElementById("registerForm");
+
+
+form.addEventListener("submit", function(event) {
+
+    let valid = true;
+
+
+    /* =========================
+       GET VALUES
+    ========================= */
+
+    const name =
+        document.getElementById("name")
+        .value.trim();
+
+    const email =
+        document.getElementById("email")
+        .value.trim();
+
+    const phone =
+        document.getElementById("phone")
+        .value.trim();
+
+    const address =
+        document.getElementById("address")
+        .value.trim();
+
+    const password =
+        document.getElementById("password")
+        .value;
+
+    const confirmPassword =
+        document.getElementById("confirm_password")
+        .value;
+
+
+    /* =========================
+       CLEAR JAVASCRIPT ERRORS
+    ========================= */
+
+    document.querySelectorAll(
+        "#registerForm .field-error"
+    ).forEach(function(error) {
+
+        /*
+           Only clear errors created
+           by JavaScript.
+        */
+
+        if (
+            error.id === "nameError" ||
+            error.id === "emailError" ||
+            error.id === "phoneError" ||
+            error.id === "addressError" ||
+            error.id === "passwordError" ||
+            error.id === "confirmPasswordError"
+        ) {
+
+            error.textContent = "";
+
+        }
+
+    });
+
+
+    /* =========================
+       NAME
+    ========================= */
+
+    if (name === "") {
+
+        document.getElementById(
+            "nameError"
+        ).textContent =
+            "Name is required.";
+
+        valid = false;
+
+    }
+
+    else if (!/^[A-Za-z ]+$/.test(name)) {
+
+        document.getElementById(
+            "nameError"
+        ).textContent =
+            "Name should contain only letters.";
+
+        valid = false;
+
+    }
+
+
+    /* =========================
+       EMAIL
+    ========================= */
+
+    const emailPattern =
+        /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+
+    if (email === "") {
+
+        document.getElementById(
+            "emailError"
+        ).textContent =
+            "Email address is required.";
+
+        valid = false;
+
+    }
+
+    else if (!emailPattern.test(email)) {
+
+        document.getElementById(
+            "emailError"
+        ).textContent =
+            "Enter a valid email address.";
+
+        valid = false;
+
+    }
+
+
+    /* =========================
+       PHONE
+    ========================= */
+
+    if (phone === "") {
+
+        document.getElementById(
+            "phoneError"
+        ).textContent =
+            "Phone number is required.";
+
+        valid = false;
+
+    }
+
+    else if (!/^[0-9]{10}$/.test(phone)) {
+
+        document.getElementById(
+            "phoneError"
+        ).textContent =
+            "Phone number must contain exactly 10 digits.";
+
+        valid = false;
+
+    }
+
+
+    /* =========================
+       ADDRESS
+    ========================= */
+
+    if (address === "") {
+
+        document.getElementById(
+            "addressError"
+        ).textContent =
+            "Address is required.";
+
+        valid = false;
+
+    }
+
+    else if (address.length < 5) {
+
+        document.getElementById(
+            "addressError"
+        ).textContent =
+            "Please enter a valid address.";
+
+        valid = false;
+
+    }
+
+
+    /* =========================
+       PASSWORD
+    ========================= */
+
+    if (password === "") {
+
+        document.getElementById(
+            "passwordError"
+        ).textContent =
+            "Password is required.";
+
+        valid = false;
+
+    }
+
+    else if (password.length < 8) {
+
+        document.getElementById(
+            "passwordError"
+        ).textContent =
+            "Password must contain at least 8 characters.";
+
+        valid = false;
+
+    }
+
+
+    /* =========================
+       CONFIRM PASSWORD
+    ========================= */
+
+    if (confirmPassword === "") {
+
+        document.getElementById(
+            "confirmPasswordError"
+        ).textContent =
+            "Please confirm your password.";
+
+        valid = false;
+
+    }
+
+    else if (password !== confirmPassword) {
+
+        document.getElementById(
+            "confirmPasswordError"
+        ).textContent =
+            "Passwords do not match.";
+
+        valid = false;
+
+    }
+
+
+    /* =========================
+       STOP SUBMISSION
+    ========================= */
+
+    if (!valid) {
+
+        event.preventDefault();
+
+    }
+
+});
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,165 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Add Service | ServiceHub</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/add_service.css' %}">
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Service<span>Hub</span>
+        </div>
+
+        <div class="nav-links">
+
+            <a href="{% url 'admin_dashboard' %}">
+                Dashboard
+            </a>
+
+            <a href="{% url 'service_management' %}">
+                Services
+            </a>
+
+            <a href="{% url 'logout' %}" class="logout">
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="container">
+
+        <div class="page-header">
+
+            <h1>Add New Service</h1>
+
+            <p>
+                Add a new service to ServiceHub.
+            </p>
+
+        </div>
+
+
+        <!-- FORM CARD -->
+
+        <div class="form-card">
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+
+                <!-- SERVICE NAME -->
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Service Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter service name"
+                        required>
+
+                </div>
+
+
+                <!-- CATEGORY -->
+
+                <div class="form-group">
+
+                    <label for="category">
+                        Category
+                    </label>
+
+                    <select
+                        id="category"
+                        name="category"
+                        required>
+
+                        <option value="">
+                            Select Category
+                        </option>
+
+                        <option value="Home">
+                            Home Service
+                        </option>
+
+                        <option value="Vehicle">
+                            Vehicle Service
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="form-group">
+
+                    <label for="description">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        rows="5"
+                        placeholder="Enter service description..."></textarea>
+
+                </div>
+
+
+                <!-- BUTTONS -->
+
+                <div class="form-actions">
+
+                    <button type="submit"
+                            class="add-btn">
+
+                        Add Service
+
+                    </button>
+
+                    <a href="{% url 'service_management' %}"
+                       class="cancel-btn">
+
+                        Cancel
+
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+</body>
+</html>

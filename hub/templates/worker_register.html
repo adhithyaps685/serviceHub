@@ -1,0 +1,690 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Worker Registration | ServiceHub</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Worker Registration CSS -->
+    <link rel="stylesheet"
+          href="{% static 'css/worker_register.css' %}">
+</head>
+
+<body>
+
+<div class="register-wrapper">
+
+    <div class="register-card">
+
+        <!-- HEADER -->
+        <div class="register-header">
+
+            <h1>
+                Worker Registration
+            </h1>
+
+            <p>
+                Submit your details to apply as a ServiceHub worker.
+            </p>
+
+        </div>
+
+
+        <!-- DJANGO SUCCESS / ERROR MESSAGES -->
+        {% if messages %}
+
+            {% for message in messages %}
+
+                <div class="message-box">
+                    <i class="fa-solid fa-circle-info"></i>
+                    {{ message }}
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+
+        <form method="POST" id="workerRegisterForm">
+
+            {% csrf_token %}
+
+
+            <!-- ================= PERSONAL INFORMATION ================= -->
+
+            <div class="section">
+
+                <div class="section-title">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <h2>Personal Information</h2>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <!-- NAME -->
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Full Name
+                        </label>
+
+                        <input type="text"
+                               id="name"
+                               name="name"
+                               value="{{ name|default:'' }}"
+                               placeholder="Enter your full name">
+
+                        {% if errors.name %}
+                            <small class="field-error">
+                                {{ errors.name }}
+                            </small>
+                        {% else %}
+                            <small id="nameError"
+                                   class="field-error"></small>
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input type="email"
+                               id="email"
+                               name="email"
+                               value="{{ email|default:'' }}"
+                               placeholder="Enter your email">
+
+                        {% if errors.email %}
+                            <small class="field-error">
+                                {{ errors.email }}
+                            </small>
+                        {% else %}
+                            <small id="emailError"
+                                   class="field-error"></small>
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- PHONE -->
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Phone Number
+                        </label>
+
+                        <input type="text"
+                               id="phone"
+                               name="phone"
+                               value="{{ phone|default:'' }}"
+                               placeholder="Enter your phone number"
+                               maxlength="10">
+
+                        {% if errors.phone %}
+                            <small class="field-error">
+                                {{ errors.phone }}
+                            </small>
+                        {% else %}
+                            <small id="phoneError"
+                                   class="field-error"></small>
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- PLACE -->
+
+                    <div class="form-group">
+
+                        <label for="place">
+                            Place
+                        </label>
+
+                        <input type="text"
+                               id="place"
+                               name="place"
+                               value="{{ place|default:'' }}"
+                               placeholder="Enter your place">
+
+                        {% if errors.place %}
+                            <small class="field-error">
+                                {{ errors.place }}
+                            </small>
+                        {% else %}
+                            <small id="placeError"
+                                   class="field-error"></small>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= SERVICE INFORMATION ================= -->
+
+            <div class="section">
+
+                <div class="section-title">
+
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                    <h2>Service Information</h2>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <!-- SERVICE -->
+
+                    <div class="form-group">
+
+                        <label for="service">
+                            Service Type
+                        </label>
+
+                        <select id="service"
+                                name="service">
+
+                            <option value="">
+                                Select your service
+                            </option>
+
+                            <option value="Electrician"
+                                {% if service == "Electrician" %}selected{% endif %}>
+                                Electrician
+                            </option>
+
+                            <option value="Plumber"
+                                {% if service == "Plumber" %}selected{% endif %}>
+                                Plumber
+                            </option>
+
+                            <option value="AC Repair"
+                                {% if service == "AC Repair" %}selected{% endif %}>
+                                AC Repair
+                            </option>
+
+                            <option value="Car Service"
+                                {% if service == "Car Service" %}selected{% endif %}>
+                                Car Service
+                            </option>
+
+                            <option value="Bike Service"
+                                {% if service == "Bike Service" %}selected{% endif %}>
+                                Bike Service
+                            </option>
+
+                            <option value="Vehicle Wash"
+                                {% if service == "Vehicle Wash" %}selected{% endif %}>
+                                Vehicle Wash
+                            </option>
+
+                            <option value="Home Maintenance"
+                                {% if service == "Home Maintenance" %}selected{% endif %}>
+                                Home Maintenance
+                            </option>
+
+                        </select>
+
+                        {% if errors.service %}
+                            <small class="field-error">
+                                {{ errors.service }}
+                            </small>
+                        {% else %}
+                            <small id="serviceError"
+                                   class="field-error"></small>
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- EXPERIENCE -->
+
+                    <div class="form-group">
+
+                        <label for="experience">
+                            Years of Experience
+                        </label>
+
+                        <input type="number"
+                               id="experience"
+                               name="experience"
+                               value="{{ experience|default:'' }}"
+                               placeholder="Example: 3"
+                               min="0">
+
+                        {% if errors.experience %}
+                            <small class="field-error">
+                                {{ errors.experience }}
+                            </small>
+                        {% else %}
+                            <small id="experienceError"
+                                   class="field-error"></small>
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- DESCRIPTION -->
+
+                    <div class="form-group full-width">
+
+                        <label for="description">
+                            About Your Service
+                        </label>
+
+                        <textarea id="description"
+                                  name="description"
+                                  rows="5"
+                                  placeholder="Tell us about your experience, skills and services...">{{ description|default:'' }}</textarea>
+
+                        {% if errors.description %}
+                            <small class="field-error">
+                                {{ errors.description }}
+                            </small>
+                        {% else %}
+                            <small id="descriptionError"
+                                   class="field-error"></small>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= ACCOUNT INFORMATION ================= -->
+
+            <div class="section">
+
+                <div class="section-title">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <h2>Account Information</h2>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <input type="password"
+                               id="password"
+                               name="password"
+                               placeholder="Enter your password">
+
+                        {% if errors.password %}
+                            <small class="field-error">
+                                {{ errors.password }}
+                            </small>
+                        {% else %}
+                            <small id="passwordError"
+                                   class="field-error"></small>
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- CONFIRM PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="confirm_password">
+                            Confirm Password
+                        </label>
+
+                        <input type="password"
+                               id="confirm_password"
+                               name="confirm_password"
+                               placeholder="Confirm your password">
+
+                        {% if errors.confirm_password %}
+                            <small class="field-error">
+                                {{ errors.confirm_password }}
+                            </small>
+                        {% else %}
+                            <small id="confirmPasswordError"
+                                   class="field-error"></small>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BUTTON -->
+
+            <button type="submit"
+                    class="register-btn">
+
+                <i class="fa-solid fa-user-plus"></i>
+
+                Submit Registration
+
+            </button>
+
+
+            <!-- LOGIN LINK -->
+
+            <div class="login-link">
+
+                Already registered?
+
+                <a href="{% url 'worker_login' %}">
+                    Login here
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT VALIDATION ================= -->
+
+<script>
+
+const form = document.getElementById("workerRegisterForm");
+
+form.addEventListener("submit", function(event) {
+
+    let valid = true;
+
+
+    // Get values
+
+    const name =
+        document.getElementById("name").value.trim();
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const phone =
+        document.getElementById("phone").value.trim();
+
+    const place =
+        document.getElementById("place").value.trim();
+
+    const service =
+        document.getElementById("service").value;
+
+    const experience =
+        document.getElementById("experience").value.trim();
+
+    const description =
+        document.getElementById("description").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    const confirmPassword =
+        document.getElementById("confirm_password").value;
+
+
+    // Error elements
+
+    const nameError =
+        document.getElementById("nameError");
+
+    const emailError =
+        document.getElementById("emailError");
+
+    const phoneError =
+        document.getElementById("phoneError");
+
+    const placeError =
+        document.getElementById("placeError");
+
+    const serviceError =
+        document.getElementById("serviceError");
+
+    const experienceError =
+        document.getElementById("experienceError");
+
+    const descriptionError =
+        document.getElementById("descriptionError");
+
+    const passwordError =
+        document.getElementById("passwordError");
+
+    const confirmPasswordError =
+        document.getElementById("confirmPasswordError");
+
+
+    // Clear old errors
+
+    nameError.textContent = "";
+    emailError.textContent = "";
+    phoneError.textContent = "";
+    placeError.textContent = "";
+    serviceError.textContent = "";
+    experienceError.textContent = "";
+    descriptionError.textContent = "";
+    passwordError.textContent = "";
+    confirmPasswordError.textContent = "";
+
+
+    // NAME
+
+    if (name === "") {
+
+        nameError.textContent =
+            "Full name is required.";
+
+        valid = false;
+
+    }
+    else if (!/^[A-Za-z ]+$/.test(name)) {
+
+        nameError.textContent =
+            "Name should contain only letters and spaces.";
+
+        valid = false;
+    }
+
+
+    // EMAIL
+
+    if (email === "") {
+
+        emailError.textContent =
+            "Email address is required.";
+
+        valid = false;
+
+    }
+    else {
+
+        const emailPattern =
+            /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+        if (!emailPattern.test(email)) {
+
+            emailError.textContent =
+                "Enter a valid email address.";
+
+            valid = false;
+        }
+    }
+
+
+    // PHONE
+
+    if (phone === "") {
+
+        phoneError.textContent =
+            "Phone number is required.";
+
+        valid = false;
+
+    }
+    else if (!/^[0-9]+$/.test(phone)) {
+
+        phoneError.textContent =
+            "Phone number should contain only digits.";
+
+        valid = false;
+
+    }
+    else if (phone.length !== 10) {
+
+        phoneError.textContent =
+            "Phone number must contain exactly 10 digits.";
+
+        valid = false;
+    }
+
+
+    // PLACE
+
+    if (place === "") {
+
+        placeError.textContent =
+            "Place is required.";
+
+        valid = false;
+    }
+
+
+    // SERVICE
+
+    if (service === "") {
+
+        serviceError.textContent =
+            "Please select a service.";
+
+        valid = false;
+    }
+
+
+    // EXPERIENCE
+
+    if (experience === "") {
+
+        experienceError.textContent =
+            "Years of experience is required.";
+
+        valid = false;
+
+    }
+    else if (Number(experience) < 0) {
+
+        experienceError.textContent =
+            "Experience cannot be negative.";
+
+        valid = false;
+    }
+
+
+    // DESCRIPTION
+
+    if (description === "") {
+
+        descriptionError.textContent =
+            "Please describe your service.";
+
+        valid = false;
+
+    }
+    else if (description.length < 10) {
+
+        descriptionError.textContent =
+            "Please enter at least 10 characters.";
+
+        valid = false;
+    }
+
+
+    // PASSWORD
+
+    if (password === "") {
+
+        passwordError.textContent =
+            "Password is required.";
+
+        valid = false;
+
+    }
+    else if (password.length < 8) {
+
+        passwordError.textContent =
+            "Password must contain at least 8 characters.";
+
+        valid = false;
+    }
+
+
+    // CONFIRM PASSWORD
+
+    if (confirmPassword === "") {
+
+        confirmPasswordError.textContent =
+            "Please confirm your password.";
+
+        valid = false;
+
+    }
+    else if (password !== confirmPassword) {
+
+        confirmPasswordError.textContent =
+            "Passwords do not match.";
+
+        valid = false;
+    }
+
+
+    // STOP SUBMISSION
+
+    if (!valid) {
+        event.preventDefault();
+    }
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,359 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body {
+    background: #f5f8fc;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: #173b6c;
+}
+
+
+/* =========================
+   MAIN WRAPPER
+========================= */
+
+.register-wrapper {
+    width: 100%;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    padding: 45px 20px;
+}
+
+
+/* =========================
+   REGISTER CARD
+========================= */
+
+.register-card {
+    width: 100%;
+
+    max-width: 680px;
+
+    background: #ffffff;
+
+    padding: 40px 45px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 30px
+        rgba(23, 59, 108, 0.08);
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.register-title {
+    text-align: center;
+
+    color: #173b6c;
+
+    font-size: 34px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================
+   SUBTITLE
+========================= */
+
+.register-subtitle {
+    text-align: center;
+
+    color: #657c98;
+
+    font-size: 17px;
+
+    margin-bottom: 32px;
+}
+
+
+/* =========================
+   FORM FIELD
+========================= */
+
+.form-field {
+    margin-bottom: 21px;
+}
+
+
+.form-field label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #102f58;
+
+    font-size: 16px;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   INPUT WRAPPER
+========================= */
+
+.input-wrapper {
+    display: flex;
+
+    width: 100%;
+
+    border: 1px solid #d8e2ef;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    transition: 0.2s;
+}
+
+
+.input-wrapper:focus-within {
+    border-color: #2775e8;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(39, 117, 232, 0.10);
+}
+
+
+/* =========================
+   ICON
+========================= */
+
+.input-icon {
+    width: 44px;
+
+    min-width: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #edf4ff;
+
+    color: #2775e8;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.input-wrapper input,
+.input-wrapper textarea {
+
+    width: 100%;
+
+    border: none;
+
+    outline: none;
+
+    padding: 13px 15px;
+
+    font-size: 16px;
+
+    color: #243f62;
+
+    background: #ffffff;
+}
+
+
+.input-wrapper textarea {
+
+    min-height: 105px;
+
+    resize: vertical;
+}
+
+
+.input-wrapper input::placeholder,
+.input-wrapper textarea::placeholder {
+
+    color: #71839a;
+}
+
+
+/* =========================
+   ERROR MESSAGE
+========================= */
+
+.field-error {
+
+    display: block;
+
+    margin-top: 6px;
+
+    color: #dc3545;
+
+    font-size: 13px;
+
+    font-weight: 500;
+}
+
+
+/* =========================
+   DJANGO MESSAGE
+========================= */
+
+.message-box {
+
+    padding: 12px 15px;
+
+    border-radius: 8px;
+
+    margin-bottom: 20px;
+
+    font-size: 14px;
+}
+
+
+.message-success {
+
+    background: #e8f7ee;
+
+    color: #198754;
+
+    border: 1px solid #b8e5c9;
+}
+
+
+.message-error {
+
+    background: #fff0f1;
+
+    color: #dc3545;
+
+    border: 1px solid #f1c0c5;
+}
+
+
+/* =========================
+   REGISTER BUTTON
+========================= */
+
+.register-btn {
+
+    width: 100%;
+
+    border: none;
+
+    border-radius: 9px;
+
+    padding: 13px;
+
+    background: #216fe8;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.register-btn:hover {
+
+    background: #155bc7;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   LOGIN LINK
+========================= */
+
+.login-link {
+
+    text-align: center;
+
+    margin-top: 22px;
+
+    color: #71839a;
+
+    font-size: 14px;
+}
+
+
+.login-link a {
+
+    color: #216fe8;
+
+    text-decoration: none;
+
+    font-weight: 600;
+}
+
+
+.login-link a:hover {
+
+    text-decoration: underline;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    .register-wrapper {
+
+        padding: 20px 12px;
+    }
+
+
+    .register-card {
+
+        padding: 30px 20px;
+    }
+
+
+    .register-title {
+
+        font-size: 28px;
+    }
+
+
+    .register-subtitle {
+
+        font-size: 14px;
+    }
+}
